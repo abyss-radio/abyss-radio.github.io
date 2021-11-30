@@ -3811,6 +3811,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.Text.Acts.SetY,
 		C3.Plugins.System.Cnds.OnLayoutStart,
+		C3.Plugins.Audio.Acts.Preload,
 		C3.Plugins.Multiplayer.Acts.SignallingConnect,
 		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingConnected,
@@ -4015,12 +4016,13 @@ self.C3_ExpressionFuncs = [
 		() => "Подключение...",
 		() => 20,
 		() => "",
-		() => 0.2,
+		() => 0.6,
 		() => "client",
 		() => "Noise",
 		() => 0,
 		() => 200,
 		() => "Поиск сигнала....",
+		() => 0.2,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
