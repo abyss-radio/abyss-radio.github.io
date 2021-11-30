@@ -1,0 +1,16 @@
+{
+	"name": "Radio Abyss",
+	"short_name": "Radio Abyss",
+	"description": "",
+	"start_url": "index.html",
+	"display": "fullscreen",
+	"orientation": "landscape",
+	"background_color": "#ffffff",
+	"icons": [
+		{
+			"src": "icons/icon-256.png",
+			"sizes": "1000x1115",
+			"type": "image/png"
+		}
+	]
+}
