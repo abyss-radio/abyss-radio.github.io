@@ -3547,6 +3547,39 @@ this._stage=0;this._stageTimeLeft+=this._onTime}this._runtime.UpdateRender()}}Ge
 }
 
 {
+'use strict';const C3=self.C3;C3.Behaviors.bound=class BoundBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.bound.Type=class BoundType extends C3.SDKBehaviorTypeBase{constructor(behaviorType){super(behaviorType)}Release(){super.Release()}OnCreate(){}};
+
+}
+
+{
+'use strict';const C3=self.C3;const MODE=0;
+C3.Behaviors.bound.Instance=class BoundInstance extends C3.SDKBehaviorInstanceBase{constructor(behInst,properties){super(behInst);this._mode=0;if(properties)this._mode=properties[MODE];this._StartTicking2()}Release(){super.Release()}SaveToJson(){return{"m":this._mode}}LoadFromJson(o){this._mode=o["m"]}Tick2(){const wi=this._inst.GetWorldInfo();const bbox=wi.GetBoundingBox();const layout=wi.GetLayout();let isChanged=false;if(this._mode===0){if(wi.GetX()<0){wi.SetX(0);isChanged=true}if(wi.GetY()<0){wi.SetY(0);
+isChanged=true}if(wi.GetX()>layout.GetWidth()){wi.SetX(layout.GetWidth());isChanged=true}if(wi.GetY()>layout.GetHeight()){wi.SetY(layout.GetHeight());isChanged=true}}else{if(bbox.getLeft()<0){wi.OffsetX(-bbox.getLeft());isChanged=true}if(bbox.getTop()<0){wi.OffsetY(-bbox.getTop());isChanged=true}if(bbox.getRight()>layout.GetWidth()){wi.OffsetX(-(bbox.getRight()-layout.GetWidth()));isChanged=true}if(bbox.getBottom()>layout.GetHeight()){wi.OffsetY(-(bbox.getBottom()-layout.GetHeight()));isChanged=true}}if(isChanged)wi.SetBboxChanged()}GetPropertyValueByIndex(index){switch(index){case MODE:return this._mode}}SetPropertyValueByIndex(index,
+value){switch(index){case MODE:this._mode=value;break}}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.bound.Cnds={};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.bound.Acts={};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.bound.Exps={};
+
+}
+
+{
 const C3 = self.C3;
 self.C3_GetObjectRefTable = function () {
 	return [
@@ -3557,6 +3590,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Rotate,
 		C3.Plugins.Mouse,
 		C3.Behaviors.Flash,
+		C3.Behaviors.bound,
 		C3.Plugins.Text,
 		C3.Plugins.Sprite.Cnds.OnCreated,
 		C3.Plugins.System.Cnds.EveryTick,
@@ -3589,6 +3623,7 @@ self.C3_JsPropNameTable = [
 	{Sprite: 0},
 	{Mouse: 0},
 	{Flash: 0},
+	{BoundToLayout: 0},
 	{Sprite2: 0},
 	{Text: 0}
 ];
