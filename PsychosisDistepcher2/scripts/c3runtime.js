@@ -4476,6 +4476,10 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => f0(n1.ExpObject(), "<", "");
 		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("День ", v0.GetValue());
+		},
 		() => "ПК",
 		() => "День 1\nМои первые шаги",
 		() => "День 2\nУсиленный поток",
